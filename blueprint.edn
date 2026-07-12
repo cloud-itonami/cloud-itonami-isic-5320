@@ -1,0 +1,15 @@
+{:itonami.blueprint/id "cloud-itonami-5320"
+ :itonami.blueprint/name "Community Last-Mile Courier"
+ :itonami.blueprint/isic-rev5 "5320"
+ :itonami.blueprint/domain :commerce/courier-delivery
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:local-commerce :merchant-data-sovereignty :accessibility]
+ :itonami.blueprint/governor :courier-governor
+ :itonami.blueprint/required-technologies [:logistics :identity :forms :audit-ledger]
+ :itonami.blueprint/optional-technologies [:robotics :telemetry :optimization]
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/robotics false
+ :itonami.blueprint/capabilities {:logistics "kotoba-lang/logistics"
+                                  :stores    "kotoba-lang/omise"
+                                  :orders    "kotoba-lang/okaimono"}
+ :itonami.blueprint/maturity :implemented}
