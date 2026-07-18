@@ -1,0 +1,91 @@
+<html><head><meta charset="utf-8"><title>cloud-itonami-isic-5320 &middot; community last-mile courier</title><style>
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ok { color: #137a3f; }
+body { font-family: system-ui,-apple-system,sans-serif; margin: 0; color: #1a1a1a; background: #fafafa; }
+header.bar { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: #fff; border-bottom: 1px solid #e5e5e5; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #f0f0f0; }
+h2 { margin-top: 0; font-size: 15px; }
+.warn { color: #b25c00; background: #fff8e1; padding: 2px 6px; border-radius: 4px; }
+main { max-width: 980px; margin: 24px auto; padding: 0 20px; }
+header.bar h1 { font-size: 18px; margin: 0; font-weight: 600; }
+.muted { color: #888; font-size: 13px; }
+.critical { color: #fff; background: #b3261e; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.card { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.err { color: #b3261e; background: #fbe9e7; padding: 2px 6px; border-radius: 4px; }
+th { font-weight: 600; color: #555; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+header.bar .badge { margin-left: auto; font-size: 12px; color: #666; }
+code { font-size: 12px; background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
+</style></head><body>
+<header class="bar">
+  <h1>Community Last-Mile Courier (ISIC 5320) — Operator Console</h1>
+  <span class="badge">read-only sample · governor-gated · dispatch/settlement always human-approved</span>
+</header>
+<main>
+  <section class="card">
+    <h2>Deliveries</h2>
+    <p class="muted">Demo snapshot — build-time-generated from <code>courierops.store</code> via <code>courierops.render-html</code> (<code>clojure -M:dev:render-html</code>), regenerated nightly.</p>
+    <table>
+      <thead><tr><th>Delivery</th><th>Order</th><th>Store</th><th>Jurisdiction</th><th>Tracking</th><th>Pickup window</th><th>POD</th><th>Exception</th><th>Dispatch / Settle</th><th>Last op status</th></tr></thead>
+      <tbody>
+        <tr><td>delivery-1</td><td>ok-1</td><td>st-kanda</td><td>JPN</td><td>1Z999AA10123456784</td><td>mon 10:00</td><td><span class="ok">confirmed</span></td><td><span class="ok">clear</span></td><td>dispatched / settled</td><td><span class="ok">committed</span></td></tr>
+        <tr><td>delivery-2</td><td>ok-3</td><td>st-kanda</td><td>ATL</td><td>1Z999AA10123456784</td><td>mon 10:00</td><td><span class="ok">confirmed</span></td><td><span class="ok">clear</span></td><td>not dispatched / not settled</td><td><span class="critical">HARD hold &middot; no-spec-basis</span></td></tr>
+        <tr><td>delivery-3</td><td>ok-3</td><td>st-kanda</td><td>JPN</td><td>BAD#TRACK123</td><td>mon 10:00</td><td><span class="ok">confirmed</span></td><td><span class="ok">clear</span></td><td>not dispatched / not settled</td><td><span class="critical">HARD hold &middot; tracking-number-invalid</span></td></tr>
+        <tr><td>delivery-4</td><td>ok-4</td><td>st-kanda</td><td>JPN</td><td>1Z999AA10123456784</td><td>sun 10:00</td><td><span class="ok">confirmed</span></td><td><span class="ok">clear</span></td><td>not dispatched / not settled</td><td><span class="critical">HARD hold &middot; store-pickup-unavailable</span></td></tr>
+        <tr><td>delivery-5</td><td>ok-2</td><td>st-kanda</td><td>JPN</td><td>1Z999AA10123456784</td><td>mon 10:00</td><td><span class="ok">confirmed</span></td><td><span class="ok">clear</span></td><td>not dispatched / not settled</td><td><span class="critical">HARD hold &middot; order-not-dispatchable</span></td></tr>
+        <tr><td>delivery-6</td><td>ok-5</td><td>st-kanda</td><td>JPN</td><td>1Z999AA10123456784</td><td>mon 10:00</td><td><span class="warn">unconfirmed</span></td><td><span class="ok">clear</span></td><td>dispatched / not settled</td><td><span class="critical">HARD hold &middot; pod-unconfirmed</span></td></tr>
+        <tr><td>delivery-7</td><td>ok-6</td><td>st-kanda</td><td>JPN</td><td>1Z999AA10123456784</td><td>mon 10:00</td><td><span class="ok">confirmed</span></td><td><span class="critical">open</span></td><td>not dispatched / not settled</td><td><span class="critical">HARD hold &middot; delivery-exception-unresolved</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="card">
+    <h2>Draft delivery-dispatch / delivery-settlement records</h2>
+    <p class="muted">Unsigned drafts only — the courier operator's own act of dispatching/settling is outside this actor's authority (see README <code>Actuation</code>).</p>
+    <table>
+      <thead><tr><th>Kind</th><th>Record id</th><th>Delivery</th><th>Jurisdiction</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>dispatch</td><td>JPN-DSP-000000</td><td>delivery-1</td><td>JPN</td><td><span class="ok">immutable draft</span></td></tr>
+        <tr><td>dispatch</td><td>JPN-DSP-000001</td><td>delivery-6</td><td>JPN</td><td><span class="ok">immutable draft</span></td></tr>
+        <tr><td>settlement</td><td>JPN-STL-000000</td><td>delivery-1</td><td>JPN</td><td><span class="ok">immutable draft</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="card">
+    <h2>Action gate (Courier Governor)</h2>
+    <p class="muted">HARD holds cannot be overridden by a human approver. Jurisdiction spec-basis, tracking-number validity, store pickup-window, order dispatchability, proof-of-delivery confirmation and unresolved delivery exceptions are independently recomputed, never trusted from the advisor's proposal; a real courier dispatch or delivery settlement is always a human courier dispatcher's call, at every rollout phase.</p>
+    <table>
+      <thead><tr><th>Op</th><th>Gate</th></tr></thead>
+      <tbody>
+        <tr><td><code>:delivery/intake</code></td><td><span class="ok">phase-3 auto-commit when clean, no capital risk yet -- the ONLY auto-eligible op in this domain</span></td></tr>
+        <tr><td><code>:jurisdiction/assess</code></td><td><span class="warn">ALWAYS human approval &middot; spec-basis independently checked against <code>courierops.facts</code>, never fabricated</span></td></tr>
+        <tr><td><code>:delivery/dispatch</code></td><td><span class="warn">ALWAYS human approval &middot; real courier act (actuation/dispatch-delivery) &middot; tracking-number validity, store pickup-window, order dispatchability, unresolved-exception and double-dispatch guard all independently enforced, never auto at any phase</span></td></tr>
+        <tr><td><code>:delivery/settle</code></td><td><span class="warn">ALWAYS human approval &middot; real courier act (actuation/settle-delivery) &middot; proof-of-delivery confirmation, unresolved-exception and double-settlement guard independently enforced, never auto at any phase</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="card">
+    <h2>Audit ledger (this run)</h2>
+    <p class="muted">Append-only decision-fact log — every proposal, hold and commit this scenario produced.</p>
+    <table>
+      <thead><tr><th>Fact</th><th>Op</th><th>Subject</th><th>Basis</th></tr></thead>
+      <tbody>
+        <tr><td>committed</td><td><code>intake</code></td><td>delivery-1</td><td>id, courier</td></tr>
+        <tr><td>committed</td><td><code>assess</code></td><td>delivery-1</td><td>貨物自動車運送事業法 第36条 (貨物軽自動車運送事業の届出), https://www.mlit.go.jp/jidosha/jidosha_tk4_000004.html</td></tr>
+        <tr><td>committed</td><td><code>dispatch</code></td><td>delivery-1</td><td>delivery-1</td></tr>
+        <tr><td>committed</td><td><code>settle</code></td><td>delivery-1</td><td>delivery-1</td></tr>
+        <tr><td>governor-hold</td><td><code>assess</code></td><td>delivery-2</td><td>no-spec-basis</td></tr>
+        <tr><td>committed</td><td><code>assess</code></td><td>delivery-3</td><td>貨物自動車運送事業法 第36条 (貨物軽自動車運送事業の届出), https://www.mlit.go.jp/jidosha/jidosha_tk4_000004.html</td></tr>
+        <tr><td>governor-hold</td><td><code>dispatch</code></td><td>delivery-3</td><td>tracking-number-invalid</td></tr>
+        <tr><td>committed</td><td><code>assess</code></td><td>delivery-4</td><td>貨物自動車運送事業法 第36条 (貨物軽自動車運送事業の届出), https://www.mlit.go.jp/jidosha/jidosha_tk4_000004.html</td></tr>
+        <tr><td>governor-hold</td><td><code>dispatch</code></td><td>delivery-4</td><td>store-pickup-unavailable</td></tr>
+        <tr><td>committed</td><td><code>assess</code></td><td>delivery-5</td><td>貨物自動車運送事業法 第36条 (貨物軽自動車運送事業の届出), https://www.mlit.go.jp/jidosha/jidosha_tk4_000004.html</td></tr>
+        <tr><td>governor-hold</td><td><code>dispatch</code></td><td>delivery-5</td><td>order-not-dispatchable</td></tr>
+        <tr><td>committed</td><td><code>assess</code></td><td>delivery-6</td><td>貨物自動車運送事業法 第36条 (貨物軽自動車運送事業の届出), https://www.mlit.go.jp/jidosha/jidosha_tk4_000004.html</td></tr>
+        <tr><td>committed</td><td><code>dispatch</code></td><td>delivery-6</td><td>delivery-6</td></tr>
+        <tr><td>governor-hold</td><td><code>settle</code></td><td>delivery-6</td><td>pod-unconfirmed</td></tr>
+        <tr><td>committed</td><td><code>assess</code></td><td>delivery-7</td><td>貨物自動車運送事業法 第36条 (貨物軽自動車運送事業の届出), https://www.mlit.go.jp/jidosha/jidosha_tk4_000004.html</td></tr>
+        <tr><td>governor-hold</td><td><code>dispatch</code></td><td>delivery-7</td><td>delivery-exception-unresolved</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body></html>
