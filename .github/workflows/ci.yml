@@ -17,6 +17,10 @@ jobs:
         with: {repository: kotoba-lang/omise, path: orgs/kotoba-lang/omise}
       - uses: actions/checkout@v4
         with: {repository: kotoba-lang/okaimono, path: orgs/kotoba-lang/okaimono}
+      - uses: actions/checkout@v4
+        with: {repository: kotoba-lang/html, path: orgs/kotoba-lang/html}
+      - uses: actions/checkout@v4
+        with: {repository: kotoba-lang/css, path: orgs/kotoba-lang/css}
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "21" }
       - uses: DeLaGuardo/setup-clojure@13.4
