@@ -29,7 +29,7 @@
   delivery itself (that is `courierops.operation`'s `:delivery/
   dispatch`/`:delivery/settle`, always human-gated -- see README
   `Actuation`)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [kotoba.logistics :as logistics]
             [kotoba.omise :as omise]
             [kotoba.okaimono :as okaimono]))
@@ -88,7 +88,7 @@
     (throw (ex-info "delivery-dispatch: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "delivery-dispatch: sequence must be >= 0" {})))
-  (let [dispatch-number (str (str/upper-case jurisdiction) "-DSP-" (zero-pad sequence 6))
+  (let [dispatch-number (str (str/upper jurisdiction) "-DSP-" (zero-pad sequence 6))
         record {"record_id" dispatch-number
                 "kind" "delivery-dispatch-draft"
                 "delivery_id" delivery-id
@@ -113,7 +113,7 @@
     (throw (ex-info "delivery-settlement: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "delivery-settlement: sequence must be >= 0" {})))
-  (let [settlement-number (str (str/upper-case jurisdiction) "-STL-" (zero-pad sequence 6))
+  (let [settlement-number (str (str/upper jurisdiction) "-STL-" (zero-pad sequence 6))
         record {"record_id" settlement-number
                 "kind" "delivery-settlement-draft"
                 "delivery_id" delivery-id
