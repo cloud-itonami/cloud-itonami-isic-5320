@@ -58,7 +58,7 @@ with:
 
 - 40 tests / 200 assertions run offline
   (facts, registry, phase, governor contract, store contract on both
-  backends); `clojure -M:dev:run` walks the clean path plus every
+  backends); `kbb -M:dev:run` walks the clean path plus every
   HARD-hold scenario.
 - The store/order directories hold `kotoba.omise`/`kotoba.okaimono`
   records as-is (EDN-encoded in the Datomic backend), so capability
