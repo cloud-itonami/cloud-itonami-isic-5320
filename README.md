@@ -109,9 +109,9 @@ delivery intake + jurisdiction facts (courierops.facts, spec-cited)
 ## Run
 
 ```sh
-clojure -M:dev:test   # 40 tests / 200 assertions
-clojure -M:lint       # clj-kondo, errors fail
-clojure -M:dev:run    # demo: clean walk + every HARD-hold scenario
+kbb -M:dev:test   # 40 tests / 200 assertions
+kbb -M:lint       # clj-kondo, errors fail
+kbb -M:dev:run    # demo: clean walk + every HARD-hold scenario
 ```
 
 ## Maturity

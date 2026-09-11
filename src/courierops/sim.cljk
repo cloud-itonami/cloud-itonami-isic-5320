@@ -1,5 +1,5 @@
 (ns courierops.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean delivery through
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean delivery through
   intake -> jurisdiction assessment -> delivery dispatch (escalate/
   approve/commit) -> delivery settlement (escalate/approve/commit),
   then shows HARD-hold scenarios: a jurisdiction with no spec-basis, an
