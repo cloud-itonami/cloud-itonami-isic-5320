@@ -78,7 +78,7 @@ autonomous, at any phase, by construction.** Two independent layers
 enforce this (`courierops.governor`'s `:actuation/dispatch-delivery`/
 `:actuation/settle-delivery` high-stakes gate and `courierops.phase`'s
 phase table, which never puts either op in any phase's `:auto` set) --
-see `courierops.phase`'s docstring and `test/courierops/phase_test.clj`'s
+see `courierops.phase`'s docstring and `test/courierops/phase_test.cljk`'s
 `delivery-dispatch-never-auto-at-any-phase`/
 `delivery-settle-never-auto-at-any-phase`. The actor may draft, check
 and recommend; a human courier dispatcher is always the one who

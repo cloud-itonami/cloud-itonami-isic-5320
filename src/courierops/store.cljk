@@ -12,7 +12,7 @@
                         `langchain.db`'s `:db-api` (see langchain.kotoba-db).
 
   Both implement the same protocol and pass the same contract
-  (test/courierops/store_contract_test.clj).
+  (test/courierops/store_contract_test.cljk).
 
   Alongside the delivery directory, this store also holds the STORE
   directory (`kotoba.omise` records) and the ORDER directory
