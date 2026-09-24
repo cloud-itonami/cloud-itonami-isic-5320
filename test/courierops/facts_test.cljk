@@ -1,5 +1,5 @@
 (ns courierops.facts-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [courierops.facts :as facts]))
 
 (deftest jpn-has-a-spec-basis
