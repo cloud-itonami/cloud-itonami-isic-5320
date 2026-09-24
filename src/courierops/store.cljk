@@ -31,7 +31,7 @@
   on what jurisdictional basis, approved by whom' is always a query
   over an immutable log -- the audit trail a merchant or customer
   trusting a courier operator needs."
-  (:require #?(:clj  [clojure.edn :as edn]
+  (:require #?(:clj  [kotoba.lang.edn :as edn]
                :cljs [cljs.reader :as edn])
             [courierops.registry :as registry]
             [langchain.db :as d]
